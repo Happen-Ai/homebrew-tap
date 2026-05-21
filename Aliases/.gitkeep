@@ -1,0 +1,3 @@
+# Tap-level aliases — the publish-tap job pushes a `bridge` symlink here
+# pointing at Formula/happen-bridge.rb so `brew install happen-ai/tap/bridge`
+# resolves the same package as `brew install happen-ai/tap/happen-bridge`.

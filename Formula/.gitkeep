@@ -1,0 +1,3 @@
+# This directory is populated by the publish-tap job in
+# https://github.com/Happen-Ai/happen-ai/blob/main/.github/workflows/bridge-release.yml
+# on every `bridge-v*` tag push.
