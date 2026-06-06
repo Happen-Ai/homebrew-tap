@@ -5,26 +5,27 @@
 # sync by `.github/workflows/bridge-release.yml`'s `publish-tap` job, which
 # copies this file into the tap repo and substitutes:
 #
-#   0.2.1              — semver from the bridge-v* tag
-#     — sha256 of happen-bridge-<VER>-darwin-arm64.tar.gz
-#       — sha256 of happen-bridge-<VER>-darwin-x64.tar.gz
+#   0.2.2              — semver from the bridge-v* tag
+#   bf7eb0c2151e8b0b40a2b2328649553274a514f5ed10dd209399aeef73332769  — sha256 of happen-bridge-<VER>-darwin-arm64.tar.gz
+#   3b38b4e90452a4aca54a64de87a9ac2b222aff560445e50180db6f739c600fd3    — sha256 of happen-bridge-<VER>-darwin-x64.tar.gz
 #
-# Until ops creates Happen-Ai/homebrew-tap AND configures TAP_REPO_TOKEN, the
-# publish-tap job no-ops and this file is dormant.
+# The binaries are hosted on the PUBLIC Happen-Ai/homebrew-tap GitHub Release
+# (mirrored from the build by the bridge-release workflow), so the formula's
+# `url` is publicly downloadable without access to the private monorepo.
 class HappenBridge < Formula
   desc "Local daemon that streams Claude Code CLI to Happen AI over WebSocket"
   homepage "https://happen-ai.com"
-  version "0.2.1"
+  version "0.2.2"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/Happen-Ai/happen-ai/releases/download/bridge-v#{version}/happen-bridge-#{version}-darwin-arm64.tar.gz"
-      sha256 ""
+      url "https://github.com/Happen-Ai/homebrew-tap/releases/download/bridge-v#{version}/happen-bridge-#{version}-darwin-arm64.tar.gz"
+      sha256 "bf7eb0c2151e8b0b40a2b2328649553274a514f5ed10dd209399aeef73332769"
     end
     on_intel do
-      url "https://github.com/Happen-Ai/happen-ai/releases/download/bridge-v#{version}/happen-bridge-#{version}-darwin-x64.tar.gz"
-      sha256 ""
+      url "https://github.com/Happen-Ai/homebrew-tap/releases/download/bridge-v#{version}/happen-bridge-#{version}-darwin-x64.tar.gz"
+      sha256 "3b38b4e90452a4aca54a64de87a9ac2b222aff560445e50180db6f739c600fd3"
     end
   end
 
@@ -59,7 +60,7 @@ class HappenBridge < Formula
       the binary runs without manual intervention. If you ever see a
       Gatekeeper warning, run:
         sudo xattr -d com.apple.quarantine $(which happen-bridge)
-      See docs/MACOS_UNSIGNED_BINARY.md in Happen-Ai/happen-ai for details.
+      See https://github.com/Happen-Ai/homebrew-tap/blob/main/MACOS_UNSIGNED_BINARY.md for details.
     EOS
   end
 
