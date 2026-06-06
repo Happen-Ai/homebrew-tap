@@ -5,9 +5,9 @@
 # sync by `.github/workflows/bridge-release.yml`'s `publish-tap` job, which
 # copies this file into the tap repo and substitutes:
 #
-#   0.2.2              — semver from the bridge-v* tag
-#   bf7eb0c2151e8b0b40a2b2328649553274a514f5ed10dd209399aeef73332769  — sha256 of happen-bridge-<VER>-darwin-arm64.tar.gz
-#   3b38b4e90452a4aca54a64de87a9ac2b222aff560445e50180db6f739c600fd3    — sha256 of happen-bridge-<VER>-darwin-x64.tar.gz
+#   0.2.3              — semver from the bridge-v* tag
+#   46434dba971591e19b07e8a3462642a17c33f7583d9802beb86524e8ef7846c1  — sha256 of happen-bridge-<VER>-darwin-arm64.tar.gz
+#   b75ca769573c14cbd9060987ecab39ada60f9852ca561cadc120f9cb91055921    — sha256 of happen-bridge-<VER>-darwin-x64.tar.gz
 #
 # The binaries are hosted on the PUBLIC Happen-Ai/homebrew-tap GitHub Release
 # (mirrored from the build by the bridge-release workflow), so the formula's
@@ -15,17 +15,17 @@
 class HappenBridge < Formula
   desc "Local daemon that streams Claude Code CLI to Happen AI over WebSocket"
   homepage "https://happen-ai.com"
-  version "0.2.2"
+  version "0.2.3"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
       url "https://github.com/Happen-Ai/homebrew-tap/releases/download/bridge-v#{version}/happen-bridge-#{version}-darwin-arm64.tar.gz"
-      sha256 "bf7eb0c2151e8b0b40a2b2328649553274a514f5ed10dd209399aeef73332769"
+      sha256 "46434dba971591e19b07e8a3462642a17c33f7583d9802beb86524e8ef7846c1"
     end
     on_intel do
       url "https://github.com/Happen-Ai/homebrew-tap/releases/download/bridge-v#{version}/happen-bridge-#{version}-darwin-x64.tar.gz"
-      sha256 "3b38b4e90452a4aca54a64de87a9ac2b222aff560445e50180db6f739c600fd3"
+      sha256 "b75ca769573c14cbd9060987ecab39ada60f9852ca561cadc120f9cb91055921"
     end
   end
 
